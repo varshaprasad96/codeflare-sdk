@@ -13,7 +13,7 @@
 # limitations under the License.
 
 """
-The config sub-module contains the definition of the ClusterConfiguration dataclass,
+The config submodule contains the definition of the ClusterConfiguration dataclass,
 which is used to specify resource requirements and other details when creating a
 Cluster object.
 """

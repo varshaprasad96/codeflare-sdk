@@ -18,36 +18,38 @@ the resources requested by the user. It also contains functions for checking the
 cluster setup queue, a list of all existing clusters, and the user's working namespace.
 """
 
-import re
 from time import sleep
 from typing import List, Optional, Tuple, Dict
 
-from kubernetes import config
 from ray.job_submission import JobSubmissionClient
 
-from .auth import config_check, api_config_handler
-from ..utils import pretty_print
-from ..utils.generate_yaml import (
+from src.codeflare_sdk.common.k8s_cluster import config_check, api_config_handler
+from . import pretty_print
+from src.codeflare_sdk.ray.appwrapper.generate_yaml import (
     generate_appwrapper,
     head_worker_gpu_count_from_cluster,
 )
-from ..utils.kube_api_helpers import _kube_api_error_handling
-from ..utils.generate_yaml import is_openshift_cluster
+from src.codeflare_sdk.common.k8s_cluster.kube_api_helpers import _kube_api_error_handling
+from src.codeflare_sdk.ray.appwrapper.generate_yaml import is_openshift_cluster
 
 from .config import ClusterConfiguration
-from .model import (
+from ..appwrapper import (
     AppWrapper,
     AppWrapperStatus,
+)
+
+from .status import (
     CodeFlareClusterStatus,
     RayCluster,
     RayClusterStatus,
 )
-from .widgets import (
-    cluster_up_down_buttons,
+
+from ...common import (
     is_notebook,
+    cluster_up_down_buttons,
 )
-from kubernetes import client, config
-from kubernetes.utils import parse_quantity
+
+from kubernetes import client
 import yaml
 import os
 import requests
@@ -218,7 +220,7 @@ class Cluster:
             return _kube_api_error_handling(e)
 
     def status(
-        self, print_to_console: bool = True
+            self, print_to_console: bool = True
     ) -> Tuple[CodeFlareClusterStatus, bool]:
         """
         Returns the requested cluster's status, as well as whether or not
@@ -389,8 +391,8 @@ class Cluster:
                 annotations = ingress.metadata.annotations
                 protocol = "http"
                 if (
-                    ingress.metadata.name == f"ray-dashboard-{self.config.name}"
-                    or ingress.metadata.name.startswith(f"{self.config.name}-ingress")
+                        ingress.metadata.name == f"ray-dashboard-{self.config.name}"
+                        or ingress.metadata.name.startswith(f"{self.config.name}-ingress")
                 ):
                     if annotations == None:
                         protocol = "http"
@@ -441,10 +443,10 @@ class Cluster:
         return head_extended_resources, worker_extended_resources
 
     def from_k8_cluster_object(
-        rc,
-        appwrapper=True,
-        write_to_file=False,
-        verify_tls=True,
+            rc,
+            appwrapper=True,
+            write_to_file=False,
+            verify_tls=True,
     ):
         config_check()
         machine_types = (
@@ -506,7 +508,7 @@ class Cluster:
         return f"ray://{ingress_domain}"
 
     def _component_resources_up(
-        self, namespace: str, api_instance: client.CustomObjectsApi
+            self, namespace: str, api_instance: client.CustomObjectsApi
     ):
         if self.config.write_to_file:
             with open(self.app_wrapper_yaml) as f:
@@ -529,7 +531,7 @@ class Cluster:
             _create_resources(yamls, namespace, api_instance)
 
     def _component_resources_down(
-        self, namespace: str, api_instance: client.CustomObjectsApi
+            self, namespace: str, api_instance: client.CustomObjectsApi
     ):
         cluster_name = self.config.name
         if self.config.write_to_file:
@@ -552,7 +554,7 @@ def list_all_clusters(namespace: str, print_to_console: bool = True):
 
 
 def list_all_queued(
-    namespace: str, print_to_console: bool = True, appwrapper: bool = False
+        namespace: str, print_to_console: bool = True, appwrapper: bool = False
 ):
     """
     Returns (and prints by default) a list of all currently queued-up Ray Clusters
@@ -594,10 +596,10 @@ def get_current_namespace():  # pragma: no cover
 
 
 def get_cluster(
-    cluster_name: str,
-    namespace: str = "default",
-    write_to_file: bool = False,
-    verify_tls: bool = True,
+        cluster_name: str,
+        namespace: str = "default",
+        write_to_file: bool = False,
+        verify_tls: bool = True,
 ):
     try:
         config_check()
@@ -627,7 +629,7 @@ def get_cluster(
 
 # private methods
 def _delete_resources(
-    yamls, namespace: str, api_instance: client.CustomObjectsApi, cluster_name: str
+        yamls, namespace: str, api_instance: client.CustomObjectsApi, cluster_name: str
 ):
     for resource in yamls:
         if resource["kind"] == "RayCluster":
@@ -696,8 +698,8 @@ def _get_ingress_domain(self):  # pragma: no cover
 
         for route in routes["items"]:
             if (
-                route["spec"]["port"]["targetPort"] == "client"
-                or route["spec"]["port"]["targetPort"] == 10001
+                    route["spec"]["port"]["targetPort"] == "client"
+                    or route["spec"]["port"]["targetPort"] == 10001
             ):
                 domain = route["spec"]["host"]
     else:
@@ -752,7 +754,7 @@ def _ray_cluster_status(name, namespace="default") -> Optional[RayCluster]:
 
 
 def _get_ray_clusters(
-    namespace="default", filter: Optional[List[RayClusterStatus]] = None
+        namespace="default", filter: Optional[List[RayClusterStatus]] = None
 ) -> List[RayCluster]:
     list_of_clusters = []
     try:
@@ -780,7 +782,7 @@ def _get_ray_clusters(
 
 
 def _get_app_wrappers(
-    namespace="default", filter=List[AppWrapperStatus]
+        namespace="default", filter=List[AppWrapperStatus]
 ) -> List[AppWrapper]:
     list_of_app_wrappers = []
 
@@ -844,8 +846,8 @@ def _map_to_ray_cluster(rc) -> Optional[RayCluster]:
             annotations = ingress.metadata.annotations
             protocol = "http"
             if (
-                ingress.metadata.name == f"ray-dashboard-{rc['metadata']['name']}"
-                or ingress.metadata.name.startswith(f"{rc['metadata']['name']}-ingress")
+                    ingress.metadata.name == f"ray-dashboard-{rc['metadata']['name']}"
+                    or ingress.metadata.name.startswith(f"{rc['metadata']['name']}-ingress")
             ):
                 if annotations == None:
                     protocol = "http"

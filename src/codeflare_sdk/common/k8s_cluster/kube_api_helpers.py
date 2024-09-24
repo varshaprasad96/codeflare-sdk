@@ -19,7 +19,6 @@ API error handling or wrapping.
 
 import executing
 from kubernetes import client, config
-from urllib3.util import parse_url
 
 
 # private methods

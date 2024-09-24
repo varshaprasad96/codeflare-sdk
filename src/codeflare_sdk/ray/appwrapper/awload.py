@@ -22,9 +22,9 @@ import errno
 import os
 import yaml
 
-from kubernetes import client, config
-from ..utils.kube_api_helpers import _kube_api_error_handling
-from .auth import config_check, api_config_handler
+from kubernetes import client
+from src.codeflare_sdk.common.k8s_cluster.kube_api_helpers import _kube_api_error_handling
+from ...common import config_check, api_config_handler
 
 
 class AWManager:

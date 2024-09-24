@@ -19,9 +19,9 @@ from cryptography.hazmat.primitives.asymmetric import rsa
 from cryptography import x509
 from cryptography.x509.oid import NameOID
 import datetime
-from ..cluster.auth import config_check, api_config_handler
-from kubernetes import client, config
-from .kube_api_helpers import _kube_api_error_handling
+from ..common.k8s_cluster import config_check, api_config_handler
+from kubernetes import client
+from ..common.k8s_cluster import _kube_api_error_handling
 
 
 def generate_ca_cert(days: int = 30):
@@ -83,7 +83,7 @@ def get_secret_name(cluster_name, namespace, api_instance):
         )
         for secret in secrets.items:
             if (
-                f"{cluster_name}-ca-secret-" in secret.metadata.name
+                    f"{cluster_name}-ca-secret-" in secret.metadata.name
             ):  # Oauth secret share the same label this conditional is to make things more specific
                 return secret.metadata.name
             else:

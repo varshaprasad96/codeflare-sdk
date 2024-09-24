@@ -16,15 +16,12 @@
 This sub-module exists primarily to be used internally by the Cluster object
 (in the cluster sub-module) for pretty-printing cluster status and details.
 """
-
-from rich import print
 from rich.table import Table
 from rich.console import Console
-from rich.layout import Layout
 from rich.panel import Panel
 from rich import box
 from typing import List
-from ..cluster.model import RayCluster, AppWrapper, RayClusterStatus
+from src.codeflare_sdk import RayCluster, AppWrapper, RayClusterStatus
 
 
 def print_no_resources_found():

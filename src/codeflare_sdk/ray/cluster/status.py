@@ -23,6 +23,7 @@ from enum import Enum
 import typing
 
 
+# TODO: move this to cluster.py
 class RayClusterStatus(Enum):
     """
     Defines the possible reportable states of a Ray cluster.
@@ -34,21 +35,6 @@ class RayClusterStatus(Enum):
     FAILED = "failed"
     UNKNOWN = "unknown"
     SUSPENDED = "suspended"
-
-
-class AppWrapperStatus(Enum):
-    """
-    Defines the possible reportable phases of an AppWrapper.
-    """
-
-    SUSPENDED = "suspended"
-    RESUMING = "resuming"
-    RUNNING = "running"
-    RESETTING = "resetting"
-    SUSPENDING = "suspending"
-    SUCCEEDED = "succeeded"
-    FAILED = "failed"
-    TERMINATING = "terminating"
 
 
 class CodeFlareClusterStatus(Enum):
@@ -85,13 +71,3 @@ class RayCluster:
     dashboard: str
     worker_extended_resources: typing.Dict[str, int] = field(default_factory=dict)
     head_extended_resources: typing.Dict[str, int] = field(default_factory=dict)
-
-
-@dataclass
-class AppWrapper:
-    """
-    For storing information about an AppWrapper.
-    """
-
-    name: str
-    status: AppWrapperStatus

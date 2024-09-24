@@ -13,7 +13,7 @@
 # limitations under the License.
 
 """
-The auth sub-module contains the definitions for the Authentication objects, which represent
+The auth submodule contains the definitions for the Authentication objects, which represent
 the methods by which a user can authenticate to their cluster(s). The abstract class, `Authentication`,
 contains two required methods `login()` and `logout()`. Users can use one of the existing concrete classes to
 authenticate to their cluster or add their own custom concrete classes here.
@@ -23,7 +23,7 @@ import abc
 from kubernetes import client, config
 import os
 import urllib3
-from ..utils.kube_api_helpers import _kube_api_error_handling
+from src.codeflare_sdk.common.k8s_cluster.kube_api_helpers import _kube_api_error_handling
 
 from typing import Optional
 
