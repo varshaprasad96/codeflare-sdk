@@ -20,14 +20,14 @@ import os
 import re
 import uuid
 
-from codeflare_sdk.cluster import cluster
+from codeflare_sdk import Cluster
 
 parent = Path(__file__).resolve().parents[1]
 aw_dir = os.path.expanduser("~/.codeflare/resources/")
 sys.path.append(str(parent) + "/src")
 
 from kubernetes import client, config, dynamic
-from codeflare_sdk.cluster.awload import AWManager
+from codeflare_sdk.codeflare_sdk.ray import AWManager
 from codeflare_sdk.cluster.cluster import (
     Cluster,
     ClusterConfiguration,

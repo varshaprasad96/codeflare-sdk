@@ -15,13 +15,12 @@
 """
 These were the old tests used during initial demo building, and they will soon be fully deprecated.
 """
-
-from codeflare_sdk.cluster.cluster import (
+from src.codeflare_sdk.ray import (
     list_all_clusters,
     list_all_queued,
     _app_wrapper_status,
 )
-from codeflare_sdk.cluster.cluster import Cluster, ClusterConfiguration
+from src.codeflare_sdk.ray import Cluster, ClusterConfiguration
 
 import time
 

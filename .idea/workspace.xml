@@ -5,18 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e229079b-c480-47e9-9dfc-4231a822802d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/codeflare_sdk/common/kueue/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/codeflare_sdk/common/kueue/kueue.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/codeflare_sdk/common/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/codeflare_sdk/common/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/codeflare_sdk/common/k8s_cluster/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/codeflare_sdk/common/k8s_cluster/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/codeflare_sdk/common/k8s_cluster/auth.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/codeflare_sdk/common/k8s_cluster/auth.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/codeflare_sdk/ray/appwrapper/awload.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/codeflare_sdk/ray/appwrapper/awload.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/codeflare_sdk/ray/cluster/cluster.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/codeflare_sdk/ray/cluster/cluster.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/codeflare_sdk/utils/generate_cert.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/codeflare_sdk/utils/generate_cert.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/codeflare_sdk/utils/generate_yaml.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/codeflare_sdk/ray/appwrapper/generate_yaml.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/codeflare_sdk/utils/kube_api_helpers.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/codeflare_sdk/common/k8s_cluster/kube_api_helpers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/codeflare_sdk/utils/pretty_print.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/codeflare_sdk/ray/cluster/pretty_print.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/demo_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/demo_test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/unit_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit_test.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,16 +37,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python.mnist.executor": "Run",
-    "Python.test.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "poc/refactor",
-    "last_opened_file_path": "/Users/vnarsing/go/src/github/project-codeflare/codeflare-sdk",
-    "settings.editor.selected.configurable": "com.intellij.pycharm.community.ide.impl.configuration.PythonContentEntriesConfigurable"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.mnist.executor&quot;: &quot;Run&quot;,
+    &quot;Python.test.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;poc/refactor&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/vnarsing/go/src/github/project-codeflare/codeflare-sdk&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.intellij.pycharm.community.ide.impl.configuration.PythonContentEntriesConfigurable&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/codeflare_sdk/common/k8s_cluster" />
